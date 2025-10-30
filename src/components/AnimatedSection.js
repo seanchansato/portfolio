@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 const AnimatedSection = ({ children }) => {
   return (
     <motion.div
-      className="bg-transparent"
+      className="bg-black/60"
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
