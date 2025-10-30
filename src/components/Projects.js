@@ -7,8 +7,8 @@ const projects = [
     title: 'Hack the Valley X - 1st Place Overall',
     description: 'Placed 1st Overall at Hack the Valley 2025, Canada’s second-largest hackathon with over 500 participants. My team and I built PlantHopper, a 360° AI-powered autonomous plant watering system that uses computer vision and soil moisture sensors to identify, track, and water multiple plants. We designed all components in CAD and built the system from scratch within 36 hours, integrating servos for rotation, pitch control, and water spraying.',
     image: 'https://storage.googleapis.com/tagjs-prod.appspot.com/v1/fXjfkg4tzh/itxui1eh_expires_30_days.png',
-    link: '#',
-    linkText: 'Devpost'
+    link: 'https://devpost.com/software/plant-hopper',
+    linkText: 'Devpost',
   },
   {
     title: '1010W Robotics - Team Captain',
@@ -16,8 +16,8 @@ const projects = [
     video: '/videoplayback.mp4',
     type: 'video',
     image: '/cover.jpg',
-    link: '#',
-    linkText: 'YouTube'
+    link: 'https://www.youtube.com/@1010W_TenTon',
+    linkText: 'YouTube',
   },
   {
     title: 'Pursuit Robotics - Founder',
@@ -46,6 +46,7 @@ const ProjectCard = ({ project, reverse, isLast }) => {
     if (videoRef.current) {
       videoRef.current.pause();
       videoRef.current.currentTime = 0;
+      // poster is automatically shown (do not clear /hide the image)
     }
   };
   return (

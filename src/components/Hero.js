@@ -47,22 +47,29 @@ export default function Hero() {
           >
             I'm a 1st year Mechatronics Engineering student at the University of Waterloo. I'm passionate about Robotics, Machine Learning, and Software Engineering
           </motion.p>
-          <motion.button
-            className="border border-white text-white text-base py-3.5 px-6 rounded-lg mt-8 transition-colors duration-300 hover:bg-white hover:text-black"
+          <motion.a
+            href="/Sean_Chan-Sato_Resume - Copy.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-white text-white text-base py-3.5 px-6 rounded-lg mt-8 transition-colors duration-300 hover:bg-white hover:text-black inline-block"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2.5 }}
           >
-            Contact
-          </motion.button>
+            View Resume
+          </motion.a>
         </div>
         <motion.div
           className="ml-0 md:ml-20 mt-10 md:mt-0"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 2.8, duration: 0.5 }}
+          whileHover={{
+            scale: 1.045,
+            boxShadow: '0 0 32px 8px rgba(70,162,255,0.6), 0 2px 32px 0px rgba(255,255,255,0.12)'
+          }}
         >
-          <img src="/Sean Profile Photo.jpg" alt="Profile" className="rounded-lg w-[900px] h-[350px] object-cover" />
+          <img src="/Sean Profile Photo.jpg" alt="Profile" className="rounded-lg w-[900px] h-[350px] object-cover transition-shadow duration-500" />
         </motion.div>
       </div>
     </section>
