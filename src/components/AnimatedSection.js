@@ -6,8 +6,8 @@ const AnimatedSection = ({ children }) => {
   return (
     <motion.div
       className="bg-black"
-      initial={{ opacity: 0, y: 100 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ y: 100 }}
+      whileInView={{ y: 0 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
     >
