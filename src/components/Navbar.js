@@ -18,7 +18,6 @@ export default function Navbar() {
       <Link href="/" className="text-white text-xl">Sean Chan-Sato</Link>
       <div className="hidden md:flex items-center space-x-8">
         <Link href="#home" className="text-white text-xl">Home</Link>
-        <Link href="#about" className="text-white text-xl">About</Link>
         <Link href="#projects" className="text-white text-xl">Projects</Link>
         <Link href="#contact" className="border border-white text-white text-base py-3.5 px-6 rounded-lg transition-colors duration-300 hover:bg-white hover:text-black">Contact</Link>
       </div>
