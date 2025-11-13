@@ -7,8 +7,10 @@ const projects = [
     title: 'Hack the Valley X - 1st Place Overall',
     description: 'Placed 1st Overall at Hack the Valley 2025, Canada’s second-largest hackathon with over 500 participants. My team and I built PlantHopper, a 360° AI-powered autonomous plant watering system that uses computer vision and soil moisture sensors to identify, track, and water multiple plants. We designed all components in CAD and built the system from scratch within 36 hours, integrating servos for rotation, pitch control, and water spraying.',
     image: 'https://storage.googleapis.com/tagjs-prod.appspot.com/v1/fXjfkg4tzh/itxui1eh_expires_30_days.png',
-    link: 'https://devpost.com/software/plant-hopper',
-    linkText: 'Devpost',
+    links: [
+      { link: 'https://devpost.com/software/plant-hopper', linkText: 'Devpost' },
+      { link: 'https://github.com/eu-lee/PlantHopper', linkText: 'GitHub' },
+    ],
   },
   {
     title: '1010W Robotics - Team Captain',
@@ -16,15 +18,25 @@ const projects = [
     video: '/videoplayback.mp4',
     type: 'video',
     image: '/cover.jpg',
-    link: 'https://www.youtube.com/@1010W_TenTon',
-    linkText: 'YouTube',
+    links: [
+      { link: 'https://www.youtube.com/@1010W_TenTon', linkText: 'YouTube' },
+      { link: 'https://docs.google.com/document/d/1cYp7VXD_LHla_nFAsAig9XAqGiWMMuAKpttWz_4mgyU/edit?usp=sharing', linkText: 'Engineering Notebook' },
+    ],
+  },
+  {
+    title: 'Go On Hacks - Second Place Overall',
+    description: 'Placed 2nd Overall at Go On Hacks 2025, a national hackathon with over 200 participants. My team and I built Smart Chair 🤖, an autonomous robotic chair that uses computer vision and sensor feedback to track and follow users. Built from scratch in 36 hours, it integrates OpenCV-based tracking, Arduino-controlled 12V motors, and ultrasonic sensors for adaptive movement. I led mechanical design and control, optimizing torque, stability, and responsiveness to demonstrate seamless mechatronic automation.',
+    image: '/image%20(1).png',
+    links: [
+      { link: 'https://devpost.com/software/goon-chair?_gl=1*rx4vs9*_gcl_au*NzA3OTkzMDkzLjE3NTk0NjQ0MTA.*_ga*Mzc3MzY2NDY1LjE3NTk0NjQ0MTA.*_ga_0YHJK3Y10M*czE3NjMwNTIyNTYkbzYwJGcxJHQxNzYzMDUyMjYzJGo1MyRsMCRoMA..', linkText: 'Devpost' },
+      { link: 'https://github.com/KevinZhao-07/Go-on-Chair', linkText: 'GitHub' },
+    ],
   },
   {
     title: 'Pursuit Robotics - Founder',
     description: 'Founded Pursuit Robotics Society to provide free robotics education to youth, empowering students through hands-on learning experiences. Developed a curriculum using the VEX IQ system and raised $5,000+ to fund program materials, inspiring innovation and fostering critical thinking. Collaborated with community partners and volunteers to create an inclusive environment, ensuring all students have access to meaningful STEM opportunities.',
     image: 'https://storage.googleapis.com/tagjs-prod.appspot.com/v1/fXjfkg4tzh/zyi8o40r_expires_30_days.png',
-    link: '#',
-    linkText: ''
+    links: [{ link: '#', linkText: '' }],
   },
 ];
 
@@ -100,19 +112,22 @@ const ProjectCard = ({ project, reverse, isLast }) => {
             <p className="text-white/70 leading-relaxed">{project.description}</p>
           )}
           <div className="flex flex-wrap gap-3 pt-2">
-            {project.link && (
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-white/90 transition-colors shadow-sm"
-              >
-                {project.linkText || 'View Project'}
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-                  <path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3z" />
-                </svg>
-              </a>
-            )}
+            {project.links && project.links.map((linkItem, linkIndex) => (
+              linkItem.link && (
+                <a
+                  key={linkIndex}
+                  href={linkItem.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-white text-black px-4 py-2 text-sm font-medium hover:bg-white/90 transition-colors shadow-sm"
+                >
+                  {linkItem.linkText || 'View Project'}
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+                    <path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3z" />
+                  </svg>
+                </a>
+              )
+            ))}
           </div>
         </div>
       </div>
