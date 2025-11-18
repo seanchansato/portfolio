@@ -15,9 +15,18 @@ export default function LoadingScreen({ progress: externalProgress }) {
           clearInterval(interval);
           return 100;
         }
-        return prev + 1;
+        let increment = Math.random() * 10;
+        if (prev < 50) {
+          increment = Math.random() * 2;
+        } else if (prev < 80) {
+          increment = Math.random() * 1;
+        } else {
+          increment = Math.random() * 0.5;
+        }
+        
+        return prev + increment;
       });
-    }, 10);
+    }, 50);
     return () => clearInterval(interval);
   }, [externalProgress]);
 
