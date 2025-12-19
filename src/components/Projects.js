@@ -24,8 +24,8 @@ const projects = [
     ],
   },
   {
-    title: 'Go On Hacks - Second Place Overall',
-    description: 'Placed 2nd Overall at Go On Hacks 2025, a national hackathon with over 200 participants. My team and I built Smart Chair, an autonomous robotic chair that uses computer vision and sensor feedback to track and follow users. Built from scratch in 36 hours, it integrates OpenCV-based tracking, Arduino-controlled 12V motors, and ultrasonic sensors for adaptive movement. I led mechanical design and control, optimizing torque, stability, and responsiveness to demonstrate seamless mechatronic automation.',
+    title: 'GHacks - Second Place Overall',
+    description: 'Placed 2nd Overall at GHacks 2025, a national hackathon with over 200 participants. My team and I built Smart Chair, an autonomous robotic chair that uses computer vision and sensor feedback to track and follow users. Built from scratch in 36 hours, it integrates OpenCV-based tracking, Arduino-controlled 12V motors, and ultrasonic sensors for adaptive movement. I led mechanical design and control, optimizing torque, stability, and responsiveness to demonstrate seamless mechatronic automation.',
     image: '/image%20(1).png',
     links: [
       { link: 'https://devpost.com/software/goon-chair?_gl=1*rx4vs9*_gcl_au*NzA3OTkzMDkzLjE3NTk0NjQ0MTA.*_ga*Mzc3MzY2NDY1LjE3NTk0NjQ0MTA.*_ga_0YHJK3Y10M*czE3NjMwNTIyNTYkbzYwJGcxJHQxNzYzMDUyMjYzJGo1MyRsMCRoMA..', linkText: 'Devpost' },
