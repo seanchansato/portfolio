@@ -90,7 +90,7 @@ export default function Home() {
         </p>
         <RedactedText />
         <p className="text-sm text-zinc-500 mt-6">
-          Current: Mechatronics Intern @ Exia Labs (A16Z SR)
+          Current: Mechatronics @ Exia Labs (A16Z SR)
         </p>
         <p className="text-xs text-zinc-700 mt-1">
           Los Angeles, California
