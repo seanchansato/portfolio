@@ -1,6 +1,66 @@
 'use client';
+import { useState, useRef, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 const LightRays = dynamic(() => import('@/components/LightRays'), { ssr: false });
+
+const TARGET = '(building robots for the US military)';
+const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&';
+
+function RedactedText() {
+  const [text, setText] = useState('');
+  const [revealed, setRevealed] = useState(false);
+  const intervalRef = useRef(null);
+  const iterRef = useRef(0);
+
+  const scramble = () => {
+    setText(TARGET.split('').map(() => CHARS[Math.floor(Math.random() * CHARS.length)]).join(''));
+  };
+
+  const startScramble = () => {
+    clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(scramble, 60);
+  };
+
+  const reveal = () => {
+    if (revealed) return;
+    setRevealed(true);
+    iterRef.current = 0;
+    clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(() => {
+      iterRef.current += 1;
+      const locked = Math.floor(iterRef.current / 1.5);
+      setText(
+        TARGET.split('').map((char, i) =>
+          i < locked ? char : CHARS[Math.floor(Math.random() * CHARS.length)]
+        ).join('')
+      );
+      if (locked >= TARGET.length) {
+        clearInterval(intervalRef.current);
+        setText(TARGET);
+      }
+    }, 24);
+  };
+
+  const hide = () => {
+    setRevealed(false);
+    startScramble();
+  };
+
+  useEffect(() => {
+    startScramble();
+    return () => clearInterval(intervalRef.current);
+  }, []);
+
+  return (
+    <p
+      className="text-sm text-zinc-600 mt-3 font-mono tracking-wide cursor-default select-none"
+      onMouseEnter={reveal}
+      onMouseLeave={hide}
+    >
+      {text}
+    </p>
+  );
+}
 
 export default function Home() {
   return (
@@ -28,9 +88,7 @@ export default function Home() {
         <p className="text-xl md:text-2xl text-zinc-400 font-light">
           Building cool stuff right now.
         </p>
-        <p className="text-sm text-zinc-500 mt-3 italic">
-          (building robots for the US military)
-        </p>
+        <RedactedText />
         <p className="text-sm text-zinc-500 mt-6">
           Current: Mechatronics Intern @ Exia Labs (A16Z SR)
         </p>
