@@ -49,6 +49,17 @@ export default function Home() {
           LinkedIn
         </a>
       </div>
+      <div className="fixed bottom-6 left-0 right-0 flex justify-center items-center gap-2 z-10">
+        <a href="https://www.ericwu.work/" aria-label="Previous site">
+          <img src="https://tronring.vercel.app/leftarrow.png" alt="Previous" style={{ width: 12, height: "auto", filter: "invert(1)" }} />
+        </a>
+        <a href="https://tronring.vercel.app/#tronring.vercel.app" target="_blank" rel="noreferrer">
+          <img src="https://tronring.vercel.app/logoblack.png" alt="Tron Webring" style={{ width: 24, height: "auto", filter: "invert(1)" }} />
+        </a>
+        <a href="https://www.wangdynasty.ca/" aria-label="Next site">
+          <img src="https://tronring.vercel.app/rightarrow.png" alt="Next" style={{ width: 12, height: "auto", filter: "invert(1)" }} />
+        </a>
+      </div>
     </main>
   );
 }
