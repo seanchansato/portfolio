@@ -37,9 +37,6 @@ export default function Home() {
         <p className="text-xs text-zinc-700 mt-1">
           Los Angeles, California
         </p>
-        <p className="text-sm text-zinc-600 mt-2">
-          Website update coming March 16.
-        </p>
         <a
           href="https://www.linkedin.com/in/seanchansato/"
           target="_blank"
