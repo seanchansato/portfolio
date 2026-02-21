@@ -47,13 +47,13 @@ export default function Home() {
         </a>
       </div>
       <div className="fixed bottom-4 left-0 right-0 flex justify-center items-center gap-1.5 z-10">
-        <a href="https://tronring.vercel.app/#tronring.vercel.app?nav=prev" aria-label="Previous site" className="opacity-40 hover:opacity-100 transition-opacity duration-300">
+        <a href="https://tronring.vercel.app/#seanchansato.work?nav=prev" aria-label="Previous site" className="opacity-40 hover:opacity-100 transition-opacity duration-300">
           <img src="https://tronring.vercel.app/leftarrow.png" alt="Previous" style={{ width: 13, height: "auto", filter: "invert(1)" }} />
         </a>
-        <a href="https://tronring.vercel.app/#tronring.vercel.app" target="_blank" rel="noreferrer" className="opacity-40 hover:opacity-100 transition-opacity duration-300">
+        <a href="https://tronring.vercel.app/#seanchansato.work" target="_blank" rel="noreferrer" className="opacity-40 hover:opacity-100 transition-opacity duration-300">
           <img src="https://tronring.vercel.app/logoblack.png" alt="Tron Webring" style={{ width: 26, height: "auto", filter: "invert(1)" }} />
         </a>
-        <a href="https://tronring.vercel.app/#tronring.vercel.app?nav=next" aria-label="Next site" className="opacity-40 hover:opacity-100 transition-opacity duration-300">
+        <a href="https://tronring.vercel.app/#seanchansato.work?nav=next" aria-label="Next site" className="opacity-40 hover:opacity-100 transition-opacity duration-300">
           <img src="https://tronring.vercel.app/rightarrow.png" alt="Next" style={{ width: 13, height: "auto", filter: "invert(1)" }} />
         </a>
       </div>
