@@ -1,92 +1,54 @@
-"use client";
-
-import { useState, useEffect } from 'react';
-import { AnimatePresence } from 'framer-motion';
-import Hero from '@/components/Hero'
-import Projects from '@/components/Projects'
-import Contact from '@/components/Contact'
-import Navbar from '@/components/Navbar'
-import AnimatedSection from '@/components/AnimatedSection'
-import LoadingScreen from '@/components/LoadingScreen';
+'use client';
 import dynamic from 'next/dynamic';
-
-const DynamicAnimatedBackground = dynamic(() => import('@/components/AnimatedBackground'), { ssr: false });
+const LightRays = dynamic(() => import('@/components/LightRays'), { ssr: false });
 
 export default function Home() {
-  const [loading, setLoading] = useState(true);
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    const imageUrls = [
-      // Projects
-      'https://storage.googleapis.com/tagjs-prod.appspot.com/v1/fXjfkg4tzh/itxui1eh_expires_30_days.png',
-      '/cover.jpg',
-      'https://storage.googleapis.com/tagjs-prod.appspot.com/v1/fXjfkg4tzh/zyi8o40r_expires_30_days.png',
-      // Gallery
-      '/dome.JPG',
-      '/HTV.png',
-      '/worldfinals.jpg',
-    ];
-
-    let loadedCount = 0;
-    const totalCount = imageUrls.length;
-    let isCancelled = false;
-
-    const updateProgress = () => {
-      if (isCancelled) return;
-      loadedCount += 1;
-      const pct = Math.round((loadedCount / totalCount) * 100);
-      setProgress(pct);
-      if (loadedCount >= totalCount) done();
-    };
-
-    const preload = imageUrls.map((src) => new Promise((resolve) => {
-      const img = new Image();
-      img.onload = () => { updateProgress(); resolve(); };
-      img.onerror = () => { updateProgress(); resolve(); };
-      img.src = src;
-    }));
-
-    const MIN_DURATION_MS = 1200;
-    const minTimer = new Promise((r) => setTimeout(r, MIN_DURATION_MS));
-
-    let finished = false;
-    const done = () => {
-      if (finished) return;
-      finished = true;
-      Promise.all([minTimer]).then(() => {
-        if (!isCancelled) setLoading(false);
-      });
-    };
-
-    Promise.all(preload).then(() => done());
-
-    return () => { isCancelled = true; };
-  }, []);
-
   return (
-    <>
-      <AnimatePresence>
-        {loading && <LoadingScreen progress={progress} />}
-      </AnimatePresence>
-
-      {!loading && (
-        <>
-          <DynamicAnimatedBackground />
-          <main className="flex min-h-screen flex-col items-center w-full max-w-screen-2xl mx-auto">
-            <Navbar />
-            <div id="home">
-              <Hero />
-            </div>
-            <AnimatedSection>
-              <Projects />
-            </AnimatedSection>
-            <AnimatedSection>
-              <Contact />
-            </AnimatedSection>
-          </main>
-        </>
-      )}
-    </>
-  )
+    <main className="min-h-screen flex items-center justify-center px-6 relative">
+      <div className="fixed inset-0 z-0">
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#ffffff"
+          raysSpeed={1}
+          lightSpread={0.5}
+          rayLength={3}
+          followMouse={true}
+          mouseInfluence={0.1}
+          noiseAmount={0}
+          distortion={0}
+          pulsating={false}
+          fadeDistance={1}
+          saturation={1}
+        />
+      </div>
+      <div className="relative z-10">
+        <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-4">
+          Hi, I'm Sean.
+        </h1>
+        <p className="text-xl md:text-2xl text-zinc-400 font-light">
+          Building cool stuff right now.
+        </p>
+        <p className="text-sm text-zinc-500 mt-3 italic">
+          (building robots for the US military)
+        </p>
+        <p className="text-sm text-zinc-500 mt-6">
+          Current: Mechatronics Intern @ Exia Labs (A16Z SR)
+        </p>
+        <p className="text-xs text-zinc-700 mt-1">
+          Los Angeles, California
+        </p>
+        <p className="text-sm text-zinc-600 mt-2">
+          Website update coming March 16.
+        </p>
+        <a
+          href="https://www.linkedin.com/in/seanchansato/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block mt-8 text-sm text-zinc-500 hover:text-white transition-colors duration-200"
+        >
+          LinkedIn
+        </a>
+      </div>
+    </main>
+  );
 }
