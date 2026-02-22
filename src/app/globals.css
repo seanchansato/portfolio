@@ -5,3 +5,8 @@
 body {
   background-color: #000;
 }
+
+@keyframes photo-float {
+  0%, 100% { transform: translateY(0px) rotate(var(--rot)); }
+  50%       { transform: translateY(var(--float-y)) rotate(var(--rot)); }
+}
