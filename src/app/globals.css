@@ -10,3 +10,9 @@ body {
   0%, 100% { transform: translateY(0px) rotate(var(--rot)); }
   50%       { transform: translateY(var(--float-y)) rotate(var(--rot)); }
 }
+
+@keyframes hint-breathe {
+  0%, 100%  { opacity: 0;    transform: translateY(-50%) translateX(-5px); }
+  18%, 65%  { opacity: 0.55; transform: translateY(-50%) translateX(0px);  }
+  82%       { opacity: 0;    transform: translateY(-50%) translateX(-5px); }
+}

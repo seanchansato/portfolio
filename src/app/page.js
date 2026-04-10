@@ -42,7 +42,7 @@ const PHOTO_PROPS = [
 
 const LightRays = dynamic(() => import('@/components/LightRays'), { ssr: false });
 
-const TARGET = '(building robots for the US military)';
+const TARGET = '(building robots to automate human tasks)';
 const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&';
 
 function RedactedText() {
@@ -97,6 +97,7 @@ function RedactedText() {
 
 export default function Home() {
   const [showPhotos, setShowPhotos] = useState(false);
+  const [hintDismissed, setHintDismissed] = useState(false);
 
   return (
     <main className="min-h-screen flex items-center justify-center px-6 relative">
@@ -140,10 +141,12 @@ export default function Home() {
             pointerEvents:   'none',
             boxShadow:       '0 4px 18px rgba(0,0,0,0.5)',
             opacity:         showPhotos ? p.opacity : 0,
-            transition:      `opacity 0.45s ease ${p.delay}s`,
+            transition:      `opacity 0.3s ease ${showPhotos ? p.delay : 0}s`,
             '--rot':         `${p.rotation}deg`,
             '--float-y':     `${p.floatY}px`,
             animation:       `photo-float ${p.floatDur}s ease-in-out infinite`,
+            animationPlayState: showPhotos ? 'running' : 'paused',
+            willChange:      'opacity, transform',
           }}
         />
       ))}
@@ -164,15 +167,38 @@ export default function Home() {
           <span
             className="cursor-default"
             style={{ display: 'inline' }}
-            onMouseEnter={() => setShowPhotos(true)}
+            onMouseEnter={() => { setShowPhotos(true); setHintDismissed(true); }}
             onMouseLeave={() => setShowPhotos(false)}
           >
-            Building{' '}
+            <span style={{ position: 'relative', display: 'inline-block' }}>
+              {/* hint anchored to "Building" for accurate vertical centering */}
+              <span
+                className="select-none pointer-events-none"
+                style={{
+                  position:      'absolute',
+                  right:         'calc(100% + 10px)',
+                  top:           '50%',
+                  transform:     'translateY(-50%)',
+                  fontSize:      '0.6rem',
+                  letterSpacing: '0.15em',
+                  color:         'rgba(255,255,255,0.38)',
+                  fontStyle:     'italic',
+                  whiteSpace:    'nowrap',
+                  opacity:       hintDismissed ? 0 : undefined,
+                  transition:    hintDismissed ? 'opacity 0.5s ease' : undefined,
+                  animation:     hintDismissed ? 'none' : 'hint-breathe 3.8s ease-in-out infinite',
+                }}
+              >
+                hover <span style={{ fontStyle: 'normal', letterSpacing: 0 }}>→</span>
+              </span>
+              Building
+            </span>
+            {' '}
             <span
               style={{
-                transition:  'color 220ms ease, text-shadow 220ms ease',
-                color:       showPhotos ? '#ffffff' : undefined,
-                textShadow:  showPhotos
+                transition: 'color 220ms ease, text-shadow 220ms ease',
+                color:      showPhotos ? '#ffffff' : undefined,
+                textShadow: showPhotos
                   ? '0 0 14px rgba(255,255,255,0.85), 0 0 30px rgba(255,255,255,0.4)'
                   : 'none',
               }}
@@ -186,10 +212,18 @@ export default function Home() {
         <RedactedText />
 
         <p className="text-sm text-zinc-500 mt-6" style={{ position: 'relative', zIndex: 1 }}>
-          Current: Mechatronics @ Exia Labs (A16Z SR)
+          Incoming Mechatronics @{' '}
+          <a
+            href="https://www.openmind.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white transition-colors duration-200"
+          >
+            OpenMind
+          </a>
         </p>
         <p className="text-xs text-zinc-700 mt-1" style={{ position: 'relative', zIndex: 1 }}>
-          Los Angeles, California
+          San Francisco, California
         </p>
         <a
           href="https://www.linkedin.com/in/seanchansato/"
