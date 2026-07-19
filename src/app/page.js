@@ -234,6 +234,16 @@ export default function Home() {
         >
           LinkedIn
         </a>
+        {' '}
+        <a
+          href="https://x.com/seanchansato"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block mt-8 ml-4 text-sm text-zinc-500 hover:text-white transition-colors duration-200"
+          style={{ position: 'relative', zIndex: 1 }}
+        >
+          X
+        </a>
       </div>
 
       <div className="fixed bottom-4 left-0 right-0 flex justify-center items-center gap-1.5 z-10">
