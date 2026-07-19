@@ -42,7 +42,7 @@ const PHOTO_PROPS = [
 
 const LightRays = dynamic(() => import('@/components/LightRays'), { ssr: false });
 
-const TARGET = '(building robots to automate human tasks)';
+const TARGET = '(building social intelligence for robots)';
 const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&';
 
 function RedactedText() {
@@ -212,7 +212,7 @@ export default function Home() {
         <RedactedText />
 
         <p className="text-sm text-zinc-500 mt-6" style={{ position: 'relative', zIndex: 1 }}>
-          Incoming Mechatronics @{' '}
+          Mechatronics @{' '}
           <a
             href="https://www.openmind.com"
             target="_blank"
